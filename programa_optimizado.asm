@@ -1,6 +1,8 @@
 # Laboratorio: Estructura de Computadores
 # Actividad: Optimizaci�n de Pipeline en Procesadores MIPS
-# Objetivo: Calcular Y[i] = A * X[i] + B e identificar riesgos de datos.
+# Optimización realizada por: Alberto Ruiz Ospina
+# Objetivo del programa: Calcular Y[i] = A * X[i] + B e identificar riesgos de datos.
+#Objetivo de la optimización: Reducir los stalls en pipeline.
 
 .data
     vector_x: .word 1, 2, 3, 4, 5, 6, 7, 8
@@ -27,15 +29,15 @@ loop:
     
     # --- Cálculo de dirección de memoria ---
     sll $t4, $t3, 2       # Desplazamiento: t4 = i * 4
-    addu $t5, $s0, $t4    # t5 = dirección de X[i]
+    addu $t5, $s0, $t4    # t5 = dirección de X[i] 
     
     # --- Carga de dato ---
     lw $t6, 0($t5)        # Leer X[i]
-    addu $t9, $s1, $t4    # t9 = dirección de Y[i]
+    addu $t9, $s1, $t4    # t9 = dirección de Y[i] (Instrucción independiente movida al intervalo Load-Use)
 
     # --- Operación aritmética ---
-    mul $t7, $t6, $t0     # t7 = X[i] * A  (Riesgo de datos: Load-Use)
-    addu $t8, $t7, $t1    # t8 = t7 + B    (Riesgo de datos: Dependencia mul-addu)
+    mul $t7, $t6, $t0     # t7 = X[i] * A 
+    addu $t8, $t7, $t1    # t8 = t7 + B    
 
     # --- Almacenamiento de resultado ---
     sw $t8, 0($t9)        # Guardar resultado en Y[i]
