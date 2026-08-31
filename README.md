@@ -3,7 +3,7 @@
 **Fecha:** [30/08/2026]  
 **Nombre del Estudiante:** [Alberto Ruiz Ospina]  
 **Asignatura:** [Estructura de Computadores]
-**Enlace del repositorio en GitHub:** [https://github.com/N0ST4LG1C/Assembler101.git]
+**Enlace del repositorio en GitHub:** [https://github.com/N0ST4LG1C/AlbertoRuiz-estructura-computadores-act01.git]
 
 ---
 
