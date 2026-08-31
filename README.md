@@ -17,7 +17,6 @@
 
 
 ### 1.2. Identificación de Riesgos (Hazards)
-Completa la siguiente tabla identificando las instrucciones que causan paradas en el pipeline:
 
 | Instrucción Causante | Instrucción Afectada     | Tipo de Riesgo (Load-Use, etc.) | Ciclos de Parada   |
 |----------------------|--------------------------|---------------------------------|--------------------|
@@ -35,7 +34,7 @@ Completa la siguiente tabla identificando las instrucciones que causan paradas e
 |----------------------|--------------------------|---------------------------------|--------------------|
 
 ### 1.2. Estadísticas y Análisis Teórico
-Dado que MARS es un simulador funcional, el número de instrucciones ejecutadas será igual en ambas versiones. Sin embargo, en un procesador real, el tiempo de ejecución (ciclos) varía:
+Dado que MARS es un simulador funcional, el número de instrucciones ejecutadas fué igual en ambas versiones. Sin embargo, en un procesador real, el tiempo de ejecución (ciclos) varía:
 
 | Métrica                                      | Código Base | Código Optimizado |
 |----------------------------------------------|-------------|-------------------|
@@ -51,7 +50,7 @@ Dado que MARS es un simulador funcional, el número de instrucciones ejecutadas 
 ## 2. Optimización Propuesta
 
 ### 2.1. Evidencia de Ejecución (Código Optimizado)
-Adjunte aquí las capturas de pantalla de la ejecución del `programa_optimizado.asm` utilizando las mismas herramientas que en el punto 1.1:
+Capturas de pantalla de la ejecución del `programa_optimizado.asm`:
 *   **MIPS X-Ray:** ![Imagen4](MIPS_Optimizado.png)
 *   **Instruction Counter:** ![Imagen5](Instrucciones_Optimizado.png)
 *   **Instruction Statistics:** ![Imagen6](Output_Optimizado.png)
@@ -106,4 +105,11 @@ Bucle loop optimizado:
 
 ¿Es siempre posible eliminar todas las paradas?
 
-> No. En este caso funcionó porque existía una instrucción independiente, disponible convenientemente para rellenar el hueco de una carga. Si cada instrucción posterior a un "lw" dependiera realmente del dato cargado y sin ningúna instrucción independiente, no habría nada que mover, y la parada sería inevitable con el hardware utilizado. Para dicho caso, las alternativas requieren ser más agresivas: Loop unrolling, software pipelining entre iteraciones, o reordenar a nivel de compilador. La reordenación de instrucciones reduce las paradas cuando hay independencia disponible, pero no las elimina por diseño en todos los casos.  
+> No. En este caso funcionó porque existía una instrucción independiente, disponible convenientemente para rellenar el hueco de una carga. Si cada instrucción posterior a un "lw" dependiera realmente del dato cargado y sin ningúna instrucción independiente, no habría nada que mover, y la parada sería inevitable con el hardware utilizado. Para dicho caso, las alternativas requieren ser más agresivas: Loop unrolling, software pipelining entre iteraciones, o reordenar a nivel de compilador. La reordenación de instrucciones reduce las paradas cuando hay independencia disponible, pero no las elimina por diseño en todos los casos.
+
+## Referencias:
+1. _Conceptos Básicos del Laboratorio: Arquitecturas
+Segmentadas.pdf_
+2. _Guía Rápida de Instrucciones MIPS Assembler.pdf_
+3. _Tutorial MARS (MIPS Assembler and Runtime
+Simulator).pdf_
