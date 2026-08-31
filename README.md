@@ -37,23 +37,24 @@ Completa la siguiente tabla identificando las instrucciones que causan paradas e
 ### 1.2. Estadísticas y Análisis Teórico
 Dado que MARS es un simulador funcional, el número de instrucciones ejecutadas será igual en ambas versiones. Sin embargo, en un procesador real, el tiempo de ejecución (ciclos) varía:
 
-| Métrica | Código Base | Código Optimizado |
-|---------|-------------|-------------------|
-| Instrucciones Totales (según MARS) |             |                   |
-| Stalls (Paradas) por iteración |             |                   |
-| Total de Stalls (8 iteraciones) |             |                   |
-| **Ciclos Totales Estimados** (Inst + Stalls) |             |                   |
-| **CPI Estimado** (Ciclos / Inst) |             |                   |
+| Métrica                                      | Código Base | Código Optimizado |
+|----------------------------------------------|-------------|-------------------|
+| Instrucciones Totales (según MARS)           |       94    |          94       |
+| Stalls (Paradas) por iteración               |        1    |           0       |
+| Total de Stalls (8 iteraciones)              |        8    |           0       |
+| **Ciclos Totales Estimados** (Inst + Stalls) |      102    |          94       |
+| **CPI Estimado** (Ciclos / Inst)             |    1.085    |       1.000       |
 
 ---
+> La optimización no reduce el número de instrucciones, sino que mejora el aprovechamiento del pipeline, esto gracias a que no eliminamos instrucciones, sino que cambiamos su orden. 
 
 ## 2. Optimización Propuesta
 
 ### 2.1. Evidencia de Ejecución (Código Optimizado)
 Adjunte aquí las capturas de pantalla de la ejecución del `programa_optimizado.asm` utilizando las mismas herramientas que en el punto 1.1:
-*   **MIPS X-Ray:**.
-*   **Instruction Counter:**.
-*   **Instruction Statistics:**.
+*   **MIPS X-Ray:** ![Imagen4](MIPS_Optimizado.png)
+*   **Instruction Counter:** ![Imagen5](Instrucciones_Optimizado.png)
+*   **Instruction Statistics:** ![Imagen6](Output_Optimizado.png)
 
 ### 2.2. Código Optimizado
 Bucle loop optimizado:
